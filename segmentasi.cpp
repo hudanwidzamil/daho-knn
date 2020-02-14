@@ -1,9 +1,11 @@
+// Muhamad Hudan Widzamil (18218003)
+// Information System and Technology, ITB
+// Dago Hoogeschool 2019/2020
+
 #include "opencv2/opencv.hpp"
 #include <iostream>
-#include "opencv2/ml/ml.hpp"
-#include <bits/stdc++.h>
 #include <fstream>
-#include <vector>
+#include "opencv2/ml/ml.hpp"
 
 using namespace std;
 using namespace cv;
@@ -55,7 +57,7 @@ int classifyAPoint(knnPoint arr[], int n, int k, knnPoint p)
 	int classifier;
 
 	classifier = 1;
-	for (int i = 1; i < 60; i++)
+	for (int i = 1; i < n; i++)
 	{
 		if (freq[i]>freq[classifier-1])
 		{
@@ -106,7 +108,7 @@ int main(){
 
 	// Create a VideoCapture object and open the input file
     // If the input is the web camera, pass 0 instead of the video file name
-	VideoCapture cap("samplevid.avi");
+	VideoCapture cap("samplevid.mp4");
 	//VideoCapture cap(0);
 
     // Check if camera opened successfully
@@ -126,7 +128,7 @@ int main(){
     int threshold = 105; //Threshold value for hough line
 	int k = 1; 			//k parameter in kNN
 	int min_rho = 280;  //Rho lower bound to detect most left line
-	int gamma = 50; //
+	int gamma = 110; //
 
 	int houghRho = 1;
 	int srn,stn = 0 ;
@@ -178,10 +180,10 @@ int main(){
 
         //Blur
         GaussianBlur(img,img,Size(3,3),3,0);
-        //GaussianBlur(img,img,Size(9,9),9,0);
         //GaussianBlur(img,img,Size(5,5),5,0);
-
-        //convert color
+		//GaussianBlur(img,img,Size(9,9),9,0);
+        
+		//convert colorspace
         Mat hsv;
         cvtColor(img,hsv,COLOR_BGR2HSV);
 
@@ -250,7 +252,6 @@ int main(){
             
             line(outlineH, pt1, pt2, Scalar(0,0,255), 2, LINE_AA); 
             
-            //cout<<rho<<" , "<<theta<<endl;
             pointcounter++;
  
         }
