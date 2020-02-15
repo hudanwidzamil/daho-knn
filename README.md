@@ -17,6 +17,8 @@ kNN algorithm implementation reference:
 https://www.geeksforgeeks.org/k-nearest-neighbours/
 *with some modification
 
+nb : check for frame 34, 264, 35, 265 (houghline inconsistency)
+
 author :
 Muhamad Hudan Widzamil
 18218003

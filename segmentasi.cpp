@@ -117,7 +117,7 @@ int main(){
         return -1;
     }
     //initial state
-    int hHSV = 60; //Hue Lower Bound
+    int hHSV = 20; //Hue Lower Bound
     int sHSV = 0; //Saturation Lower Bound
     int vHSV = 50;  //Value Lower Bound 
 
@@ -125,10 +125,10 @@ int main(){
     int max_sHSV = 80; //Saturation Upper Bound
     int max_vHSV = 255;  //Value Upper Bound 
 
-    int threshold = 105; //Threshold value for hough line
+    int threshold = 130; //Threshold value for hough line
 	int k = 1; 			//k parameter in kNN
 	int min_rho = 280;  //Rho lower bound to detect most left line
-	int gamma = 110; //
+	int gamma = 20; //
 
 	int houghRho = 1;
 	int srn,stn = 0 ;
@@ -253,8 +253,12 @@ int main(){
             line(outlineH, pt1, pt2, Scalar(0,0,255), 2, LINE_AA); 
             
             pointcounter++;
+
+			cout << "rho: " << rho << ", theta:" << theta << endl;
  
         }
+		
+		cout << "pointcounter :" << pointcounter << endl;
 		
         imshow("line",outlineH);
 
